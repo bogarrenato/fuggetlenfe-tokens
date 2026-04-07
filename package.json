@@ -1,0 +1,21 @@
+{
+  "name": "@fuggetlenfe/tokens",
+  "version": "0.1.0",
+  "type": "module",
+  "sideEffects": [
+    "./src/theme.css",
+    "./src/contract.css",
+    "./src/figma-preset.css"
+  ],
+  "exports": {
+    ".": "./src/index.js",
+    "./contract.css": "./src/contract.css",
+    "./figma-preset.css": "./src/figma-preset.css",
+    "./theme.css": "./src/theme.css",
+    "./tokens.json": "./src/tokens.json"
+  },
+  "scripts": {
+    "test": "node --test ./test/*.test.mjs",
+    "figma:sync": "node scripts/sync-figma.mjs"
+  }
+}

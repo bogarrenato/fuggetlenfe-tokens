@@ -1,0 +1,20 @@
+{
+  "name": "@fuggetlenfe/brand-styles",
+  "version": "0.1.0",
+  "type": "module",
+  "sideEffects": [
+    "./src/*.css"
+  ],
+  "exports": {
+    "./brand-1-light.css": "./src/brand-1-light.css",
+    "./brand-1-dark.css": "./src/brand-1-dark.css",
+    "./brand-2-light.css": "./src/brand-2-light.css",
+    "./brand-2-dark.css": "./src/brand-2-dark.css",
+    "./brand-3-light.css": "./src/brand-3-light.css",
+    "./brand-3-dark.css": "./src/brand-3-dark.css",
+    "./custom-brand-light.css": "./src/custom-brand-light.css",
+    "./custom-brand-dark.css": "./src/custom-brand-dark.css",
+    "./custom-brand.css": "./src/custom-brand.css",
+    "./demo.css": "./src/demo.css"
+  }
+}

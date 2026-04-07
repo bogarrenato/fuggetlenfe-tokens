@@ -1,0 +1,30 @@
+/*
+  Generated from the Figma Variables API.
+  This is an official brand pack file. Do not hand-edit it.
+*/
+[data-theme='dark'] {
+  --ff-color-canvas: #434040;
+  --ff-color-surface: #434040;
+  --ff-color-text-primary: #FAFAFA;
+  --ff-color-text-secondary: #D2D2D2;
+  --ff-color-text-muted: #949494;
+  --ff-color-border-subtle: #6C6A6A;
+}
+
+[data-brand='brand-2'] {
+  --ff-font-family-brand: "Inter", Arial, sans-serif;
+  --ff-button-radius: 4px;
+  --ff-button-padding-inline: 8px;
+  --ff-button-padding-block: 0px;
+}
+
+[data-brand='brand-2'][data-theme='dark'] {
+  --ff-button-bg-default: #6EE96E;
+  --ff-button-fg-default: #FAFAFA;
+  --ff-button-bg-hover: #32A532;
+  --ff-button-fg-hover: #FAFAFA;
+  --ff-button-bg-active: #0E610E;
+  --ff-button-fg-active: #BDBDBD;
+  --ff-button-bg-disabled: #808080;
+  --ff-button-fg-disabled: #949494;
+}

@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600&display=swap');
+
+[data-theme='dark'] {
+  --ff-color-canvas: #1a120f;
+  --ff-color-surface: #241915;
+  --ff-color-text-primary: #fff4eb;
+  --ff-color-text-secondary: #f2c7ac;
+  --ff-color-text-muted: #cb9d80;
+  --ff-color-border-subtle: #4d3325;
+}
+
+[data-brand='custom-brand'] {
+  --ff-font-family-brand: 'Sora', Inter, Arial, sans-serif;
+  --ff-button-radius: 18px;
+  --ff-button-padding-inline: 1.2rem;
+  --ff-button-padding-block: 0.7rem;
+}
+
+[data-brand='custom-brand'][data-theme='dark'] {
+  --ff-button-bg-default: #ffb273;
+  --ff-button-fg-default: #2e1707;
+  --ff-button-bg-hover: #ffc18e;
+  --ff-button-fg-hover: #2e1707;
+  --ff-button-bg-active: #d9b8ff;
+  --ff-button-fg-active: #24113f;
+  --ff-button-bg-disabled: #4f392f;
+  --ff-button-fg-disabled: #cda995;
+}

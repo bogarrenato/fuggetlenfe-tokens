@@ -1,0 +1,191 @@
+/*
+  Generated from the Figma Variables API.
+  This file is a full design snapshot and should not be hand-edited.
+*/
+:root {
+  --ff-palette-brand-1-10: #F0EFFF;
+  --ff-palette-brand-1-20: #CECBFF;
+  --ff-palette-brand-1-30: #ADA7FF;
+  --ff-palette-brand-1-40: #8B83FF;
+  --ff-palette-brand-1-50: #695EFD;
+  --ff-palette-brand-1-60: #5147DB;
+  --ff-palette-brand-1-70: #3C33B9;
+  --ff-palette-brand-1-80: #2A2297;
+  --ff-palette-brand-1-90: #1B1575;
+  --ff-palette-brand-1-100: #100B53;
+  --ff-palette-brand-2-10: #F3FFF3;
+  --ff-palette-brand-2-20: #DAFFDA;
+  --ff-palette-brand-2-30: #C0FFC0;
+  --ff-palette-brand-2-40: #A7FFA7;
+  --ff-palette-brand-2-50: #8DFF8D;
+  --ff-palette-brand-2-60: #6EE96E;
+  --ff-palette-brand-2-70: #4DC74D;
+  --ff-palette-brand-2-80: #32A532;
+  --ff-palette-brand-2-90: #1D831D;
+  --ff-palette-brand-2-100: #0E610E;
+  --ff-palette-brand-3-10: #EFFFFD;
+  --ff-palette-brand-3-20: #CDFFFB;
+  --ff-palette-brand-3-30: #AAFFF8;
+  --ff-palette-brand-3-40: #87FFF5;
+  --ff-palette-brand-3-50: #61F6EA;
+  --ff-palette-brand-3-60: #49D4C9;
+  --ff-palette-brand-3-70: #35B2A8;
+  --ff-palette-brand-3-80: #249087;
+  --ff-palette-brand-3-90: #166E67;
+  --ff-palette-brand-3-100: #0C4C47;
+  --ff-palette-info-10: #E7E7FF;
+  --ff-palette-info-20: #BEBEFF;
+  --ff-palette-info-30: #9494FF;
+  --ff-palette-info-40: #6A6AFF;
+  --ff-palette-info-50: #4040FF;
+  --ff-palette-info-60: #1616FF;
+  --ff-palette-info-70: #0000DD;
+  --ff-palette-info-80: #0000B4;
+  --ff-palette-info-90: #00008B;
+  --ff-palette-info-100: #000062;
+  --ff-palette-warning-10: #FFFCE9;
+  --ff-palette-warning-20: #FFF8C3;
+  --ff-palette-warning-30: #FFF39D;
+  --ff-palette-warning-40: #FFEF76;
+  --ff-palette-warning-50: #FFEA50;
+  --ff-palette-warning-60: #FFE62A;
+  --ff-palette-warning-70: #E5CD14;
+  --ff-palette-warning-80: #BCA702;
+  --ff-palette-warning-90: #948200;
+  --ff-palette-warning-100: #6B5E00;
+  --ff-palette-error-10: #FFEAEA;
+  --ff-palette-error-20: #FFC4C4;
+  --ff-palette-error-30: #FF9E9E;
+  --ff-palette-error-40: #FF7878;
+  --ff-palette-error-50: #FF5252;
+  --ff-palette-error-60: #FF2C2C;
+  --ff-palette-error-70: #E31616;
+  --ff-palette-error-80: #BA0404;
+  --ff-palette-error-90: #910000;
+  --ff-palette-error-100: #680000;
+  --ff-palette-success-10: #EFFFF3;
+  --ff-palette-success-20: #CDFFD8;
+  --ff-palette-success-30: #ABFFBD;
+  --ff-palette-success-40: #88FFA2;
+  --ff-palette-success-50: #66FF87;
+  --ff-palette-success-60: #51EB73;
+  --ff-palette-success-70: #3BC95A;
+  --ff-palette-success-80: #28A744;
+  --ff-palette-success-90: #198531;
+  --ff-palette-success-100: #0D6320;
+  --ff-palette-neutral-10: #FAFAFA;
+  --ff-palette-neutral-20: #E6E6E6;
+  --ff-palette-neutral-30: #D2D2D2;
+  --ff-palette-neutral-40: #BDBDBD;
+  --ff-palette-neutral-50: #A9A9A9;
+  --ff-palette-neutral-60: #949494;
+  --ff-palette-neutral-70: #808080;
+  --ff-palette-neutral-80: #6C6A6A;
+  --ff-palette-neutral-90: #575454;
+  --ff-palette-neutral-100: #434040;
+}
+
+[data-brand="brand-1"] {
+  --ff-font-family-brand: Arial, sans-serif;
+  --ff-button-radius: 0px;
+  --ff-button-padding-inline: 8px;
+  --ff-button-padding-block: 0px;
+}
+
+[data-brand="brand-2"] {
+  --ff-font-family-brand: "Inter", Arial, sans-serif;
+  --ff-button-radius: 4px;
+  --ff-button-padding-inline: 8px;
+  --ff-button-padding-block: 0px;
+}
+
+[data-brand="brand-3"] {
+  --ff-font-family-brand: "Open Sans", Arial, sans-serif;
+  --ff-button-radius: 999px;
+  --ff-button-padding-inline: 16px;
+  --ff-button-padding-block: 4px;
+}
+
+[data-theme="light"] {
+  --ff-color-canvas: #FAFAFA;
+  --ff-color-surface: #FAFAFA;
+  --ff-color-text-primary: #434040;
+  --ff-color-text-secondary: #808080;
+  --ff-color-text-muted: #A9A9A9;
+  --ff-color-border-subtle: #D9D9D9;
+}
+
+[data-theme="dark"] {
+  --ff-color-canvas: #434040;
+  --ff-color-surface: #434040;
+  --ff-color-text-primary: #FAFAFA;
+  --ff-color-text-secondary: #D2D2D2;
+  --ff-color-text-muted: #949494;
+  --ff-color-border-subtle: #6C6A6A;
+}
+
+[data-brand="brand-1"][data-theme="light"] {
+  --ff-button-bg-default: #695EFD;
+  --ff-button-fg-default: #F0EFFF;
+  --ff-button-bg-hover: #ADA7FF;
+  --ff-button-fg-hover: #F0EFFF;
+  --ff-button-bg-active: #F0EFFF;
+  --ff-button-fg-active: #5147DB;
+  --ff-button-bg-disabled: #BDBDBD;
+  --ff-button-fg-disabled: #A9A9A9;
+}
+
+[data-brand="brand-1"][data-theme="dark"] {
+  --ff-button-bg-default: #5147DB;
+  --ff-button-fg-default: #100B53;
+  --ff-button-bg-hover: #2A2297;
+  --ff-button-fg-hover: #100B53;
+  --ff-button-bg-active: #100B53;
+  --ff-button-fg-active: #695EFD;
+  --ff-button-bg-disabled: #808080;
+  --ff-button-fg-disabled: #949494;
+}
+
+[data-brand="brand-2"][data-theme="light"] {
+  --ff-button-bg-default: #8DFF8D;
+  --ff-button-fg-default: #434040;
+  --ff-button-bg-hover: #C0FFC0;
+  --ff-button-fg-hover: #434040;
+  --ff-button-bg-active: #F3FFF3;
+  --ff-button-fg-active: #808080;
+  --ff-button-bg-disabled: #BDBDBD;
+  --ff-button-fg-disabled: #A9A9A9;
+}
+
+[data-brand="brand-2"][data-theme="dark"] {
+  --ff-button-bg-default: #6EE96E;
+  --ff-button-fg-default: #FAFAFA;
+  --ff-button-bg-hover: #32A532;
+  --ff-button-fg-hover: #FAFAFA;
+  --ff-button-bg-active: #0E610E;
+  --ff-button-fg-active: #BDBDBD;
+  --ff-button-bg-disabled: #808080;
+  --ff-button-fg-disabled: #949494;
+}
+
+[data-brand="brand-3"][data-theme="light"] {
+  --ff-button-bg-default: #61F6EA;
+  --ff-button-fg-default: #808080;
+  --ff-button-bg-hover: #AAFFF8;
+  --ff-button-fg-hover: #808080;
+  --ff-button-bg-active: #EFFFFD;
+  --ff-button-fg-active: #808080;
+  --ff-button-bg-disabled: #BDBDBD;
+  --ff-button-fg-disabled: #A9A9A9;
+}
+
+[data-brand="brand-3"][data-theme="dark"] {
+  --ff-button-bg-default: #49D4C9;
+  --ff-button-fg-default: #BDBDBD;
+  --ff-button-bg-hover: #249087;
+  --ff-button-fg-hover: #BDBDBD;
+  --ff-button-bg-active: #0C4C47;
+  --ff-button-fg-active: #BDBDBD;
+  --ff-button-bg-disabled: #808080;
+  --ff-button-fg-disabled: #949494;
+}
