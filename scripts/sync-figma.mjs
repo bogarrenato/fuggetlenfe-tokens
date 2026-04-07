@@ -70,7 +70,7 @@ async function fetchLocalVariables(figmaFileKey, figmaToken) {
       errorMessage.includes('file_variables:read')
     ) {
       throw new Error(
-        'The provided Figma token cannot read Variables. Create a token with the "file_variables:read" scope and rerun pnpm figma:sync.'
+        'The provided Figma token cannot read Variables. Create a token with the "file_variables:read" scope and rerun npm run figma:sync.'
       );
     }
 

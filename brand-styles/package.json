@@ -1,9 +1,14 @@
 {
   "name": "@fuggetlenfe/brand-styles",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "description": "Official brand CSS packs for the Fuggetlenfe design system.",
   "type": "module",
   "sideEffects": [
     "./src/*.css"
+  ],
+  "files": [
+    "src/",
+    "README.md"
   ],
   "exports": {
     "./brand-1-light.css": "./src/brand-1-light.css",
@@ -16,5 +21,17 @@
     "./custom-brand-dark.css": "./src/custom-brand-dark.css",
     "./custom-brand.css": "./src/custom-brand.css",
     "./demo.css": "./src/demo.css"
-  }
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bogarrenato/fuggetlenfe-tokens.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bogarrenato/fuggetlenfe-tokens/issues"
+  },
+  "homepage": "https://github.com/bogarrenato/fuggetlenfe-tokens/tree/main/brand-styles#readme"
 }

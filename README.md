@@ -1,14 +1,43 @@
-# @fuggetlenfe/tokens
+# fuggetlenfe-tokens
 
-Design token contract and brand-style CSS packs, driven by the Figma Variables API.
+The design contract repository for the Fuggetlenfe platform.
 
-## Packages
+This repository publishes two npm packages:
 
-- **@fuggetlenfe/tokens** — CSS custom property contract (`contract.css`), Figma preset, theme definitions, and the JS/TS token map.
-- **@fuggetlenfe/brand-styles** (sub-package in `brand-styles/`) — Per-brand, per-theme CSS packs that override `--ff-*` custom properties.
+- `@fuggetlenfe/tokens`
+- `@fuggetlenfe/brand-styles`
 
-## Figma Sync
+## What lives here
+
+- the Figma Variables sync entry point
+- the variable-first token binding logic
+- the generated token contract files
+- the official brand CSS packs
+
+## Release order
+
+This repository must be released before the other platform repositories.
+
+1. `@fuggetlenfe/tokens`
+2. `@fuggetlenfe/brand-styles`
+3. `@fuggetlenfe/components`
+4. `@fuggetlenfe/react-wrapper`
+5. `@fuggetlenfe/angular-wrapper`
+
+The other repositories install the published packages from npm. They do not
+share token sources through a local workspace link in production.
+
+## Local commands
 
 ```bash
-FIGMA_TOKEN=<your-token> npm run figma:sync
+npm install
+npm test
+FIGMA_TOKEN=your_token npm run figma:sync
+npm run pack:check
 ```
+
+## npm publishing
+
+Publishing is handled by GitHub Actions and requires an `NPM_TOKEN` repository
+secret. The release workflow publishes both packages with public access and
+provenance enabled.

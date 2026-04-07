@@ -1,11 +1,21 @@
 {
   "name": "@fuggetlenfe/tokens",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "description": "Figma-backed token contract and style export package for the Fuggetlenfe design system.",
   "type": "module",
+  "workspaces": [
+    "brand-styles"
+  ],
   "sideEffects": [
     "./src/theme.css",
     "./src/contract.css",
     "./src/figma-preset.css"
+  ],
+  "files": [
+    "src/",
+    "scripts/",
+    "test/",
+    "README.md"
   ],
   "exports": {
     ".": "./src/index.js",
@@ -14,8 +24,21 @@
     "./theme.css": "./src/theme.css",
     "./tokens.json": "./src/tokens.json"
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bogarrenato/fuggetlenfe-tokens.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bogarrenato/fuggetlenfe-tokens/issues"
+  },
+  "homepage": "https://github.com/bogarrenato/fuggetlenfe-tokens#readme",
   "scripts": {
     "test": "node --test ./test/*.test.mjs",
-    "figma:sync": "node scripts/sync-figma.mjs"
+    "figma:sync": "node scripts/sync-figma.mjs",
+    "pack:check": "npm pack --dry-run && npm pack --dry-run --workspace @fuggetlenfe/brand-styles"
   }
 }
