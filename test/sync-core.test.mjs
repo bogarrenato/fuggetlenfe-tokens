@@ -223,10 +223,18 @@ test('buildTokensFromVariablePayload resolves named Figma variables into the tok
   assert.equal(tokens.themes.light.canvas, '#FAFAFA');
   assert.equal(tokens.themes.dark.textPrimary, '#FAFAFA');
   assert.equal(tokens.brands['brand-2'].fontFamily, '"Inter", Arial, sans-serif');
-  assert.equal(tokens.brands['brand-3'].paddingBlock, '4px');
+  assert.equal(tokens.brands['brand-3'].control.paddingBlock, '4px');
   assert.equal(tokens.components.button['brand-1'].light.default.background, '#695EFD');
-  assert.equal(tokens.components.button['brand-1'].dark.active.foreground, '#695EFD');
-  assert.equal(tokens.components.button['brand-2'].dark.active.foreground, '#BDBDBD');
+  assert.equal(tokens.components.button['brand-1'].dark.active.foreground, '#5147DB');
+  assert.equal(tokens.components.button['brand-2'].dark.active.foreground, '#808080');
+  assert.equal(
+    tokens.meta.bindings.themes.light.canvas.variable,
+    'Semantic/Background/Canvas'
+  );
+  assert.equal(
+    tokens.meta.bindings.components.button['brand-1'].light.default.background.variable,
+    'Backround/Brand1/Primary'
+  );
 });
 
 test('buildGeneratedArtifacts emits contract, preset, and official brand pack stylesheets', () => {
@@ -236,9 +244,11 @@ test('buildGeneratedArtifacts emits contract, preset, and official brand pack st
   });
   const generatedArtifacts = buildGeneratedArtifacts(tokens);
 
-  assert.match(generatedArtifacts.contractCss, /--ff-color-canvas: #FAFAFA;/);
+  assert.match(generatedArtifacts.contractCss, /--ff-control-radius: 0px;/);
+  assert.match(generatedArtifacts.contractCss, /--ff-button-radius: var\(--ff-control-radius\);/);
   assert.match(generatedArtifacts.figmaPresetCss, /\[data-brand="brand-2"\]\[data-theme="dark"\]/);
   assert.ok(generatedArtifacts.brandStyles['brand-1-light.css']);
   assert.match(generatedArtifacts.brandStyles['brand-1-light.css'], /--ff-button-bg-default: #695EFD;/);
+  assert.match(generatedArtifacts.brandStyles['brand-1-light.css'], /--ff-control-radius: 0px;/);
   assert.match(generatedArtifacts.brandStyles['brand-3-dark.css'], /\[data-theme='dark'\]/);
 });

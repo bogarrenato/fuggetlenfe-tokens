@@ -13,9 +13,9 @@
 
 [data-brand='brand-2'] {
   --ff-font-family-brand: "Inter", Arial, sans-serif;
-  --ff-button-radius: 4px;
-  --ff-button-padding-inline: 8px;
-  --ff-button-padding-block: 0px;
+  --ff-control-radius: 4px;
+  --ff-control-padding-inline: 8px;
+  --ff-control-padding-block: 0px;
 }
 
 [data-brand='brand-2'][data-theme='light'] {

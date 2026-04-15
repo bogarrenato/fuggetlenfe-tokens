@@ -13,9 +13,9 @@
 
 [data-brand='brand-3'] {
   --ff-font-family-brand: "Open Sans", Arial, sans-serif;
-  --ff-button-radius: 999px;
-  --ff-button-padding-inline: 16px;
-  --ff-button-padding-block: 4px;
+  --ff-control-radius: 999px;
+  --ff-control-padding-inline: 16px;
+  --ff-control-padding-block: 4px;
 }
 
 [data-brand='brand-3'][data-theme='dark'] {

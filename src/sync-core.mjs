@@ -3,106 +3,60 @@ const COLOR_MODE_ALIASES = {
   dark: ['dark', 'night']
 };
 
-const THEME_BINDINGS = {
+const THEME_TOKEN_BINDINGS = {
   light: {
-    canvas: ['semantic/background/canvas', 'theme/light/canvas', 'background/neutral/primary'],
-    surface: ['semantic/background/surface', 'theme/light/surface', 'background/neutral/primary'],
-    textPrimary: ['semantic/text/primary', 'text/neutral/primary'],
-    textSecondary: ['semantic/text/secondary', 'text/neutral/secondary', 'text/neutral/tertiary'],
-    textMuted: ['semantic/text/muted', 'text/neutral/muted', 'text/neutral/disabled'],
-    borderSubtle: ['semantic/border/subtle', 'border/neutral/subtle', 'background/neutral/disabled']
+    canvas: createThemeBinding('light.canvas', 'background/canvas', ['theme/light/canvas', 'background/neutral/primary']),
+    surface: createThemeBinding('light.surface', 'background/surface', ['theme/light/surface', 'background/neutral/primary']),
+    textPrimary: createThemeBinding('light.textPrimary', 'text/primary', ['text/neutral/primary']),
+    textSecondary: createThemeBinding('light.textSecondary', 'text/secondary', ['text/neutral/secondary', 'text/neutral/tertiary']),
+    textMuted: createThemeBinding('light.textMuted', 'text/muted', ['text/neutral/muted', 'text/neutral/disabled']),
+    borderSubtle: createThemeBinding('light.borderSubtle', 'border/subtle', ['border/neutral/subtle', 'background/neutral/disabled'])
   },
   dark: {
-    canvas: ['semantic/background/canvas', 'theme/dark/canvas', 'background/neutral/primary'],
-    surface: ['semantic/background/surface', 'theme/dark/surface', 'background/neutral/primary'],
-    textPrimary: ['semantic/text/primary', 'text/neutral/primary'],
-    textSecondary: ['semantic/text/secondary', 'text/neutral/secondary', 'text/neutral/tertiary'],
-    textMuted: ['semantic/text/muted', 'text/neutral/muted', 'text/neutral/disabled'],
-    borderSubtle: ['semantic/border/subtle', 'border/neutral/subtle', 'background/neutral/disabled']
+    canvas: createThemeBinding('dark.canvas', 'background/canvas', ['theme/dark/canvas', 'background/neutral/primary']),
+    surface: createThemeBinding('dark.surface', 'background/surface', ['theme/dark/surface', 'background/neutral/primary']),
+    textPrimary: createThemeBinding('dark.textPrimary', 'text/primary', ['text/neutral/primary']),
+    textSecondary: createThemeBinding('dark.textSecondary', 'text/secondary', ['text/neutral/secondary', 'text/neutral/tertiary']),
+    textMuted: createThemeBinding('dark.textMuted', 'text/muted', ['text/neutral/muted', 'text/neutral/disabled']),
+    borderSubtle: createThemeBinding('dark.borderSubtle', 'border/subtle', ['border/neutral/subtle', 'background/neutral/disabled'])
   }
 };
 
-const BRAND_BINDINGS = {
+const BRAND_ALIASES = {
+  'brand-1': ['brand-1', 'brand1'],
+  'brand-2': ['brand-2', 'brand2'],
+  'brand-3': ['brand-3', 'brand3']
+};
+
+const BRAND_FOUNDATION_BINDINGS = {
   'brand-1': {
     label: 'Brand 1',
-    fontFamily: { candidates: ['font/family/arial'], unit: null },
-    radius: { candidates: ['border-radius/0', 'borderradius/0'], unit: 'px' },
-    paddingInline: { candidates: ['spacing/8'], unit: 'px' },
-    paddingBlock: { candidates: ['spacing/0'], unit: 'px' }
+    fontFamily: createBrandFoundationBinding('brand-1.fontFamily', 'brand-1', 'font-family', ['font/family/arial']),
+    controlRadius: createBrandFoundationBinding('brand-1.controlRadius', 'brand-1', 'control/radius', ['border-radius/0', 'borderradius/0'], 'px'),
+    controlPaddingInline: createBrandFoundationBinding('brand-1.controlPaddingInline', 'brand-1', 'control/padding-inline', ['spacing/8'], 'px'),
+    controlPaddingBlock: createBrandFoundationBinding('brand-1.controlPaddingBlock', 'brand-1', 'control/padding-block', ['spacing/0'], 'px')
   },
   'brand-2': {
     label: 'Brand 2',
-    fontFamily: { candidates: ['font/family/inter'], unit: null },
-    radius: { candidates: ['border-radius/4', 'borderradius/4'], unit: 'px' },
-    paddingInline: { candidates: ['spacing/8'], unit: 'px' },
-    paddingBlock: { candidates: ['spacing/0'], unit: 'px' }
+    fontFamily: createBrandFoundationBinding('brand-2.fontFamily', 'brand-2', 'font-family', ['font/family/inter']),
+    controlRadius: createBrandFoundationBinding('brand-2.controlRadius', 'brand-2', 'control/radius', ['border-radius/4', 'borderradius/4'], 'px'),
+    controlPaddingInline: createBrandFoundationBinding('brand-2.controlPaddingInline', 'brand-2', 'control/padding-inline', ['spacing/8'], 'px'),
+    controlPaddingBlock: createBrandFoundationBinding('brand-2.controlPaddingBlock', 'brand-2', 'control/padding-block', ['spacing/0'], 'px')
   },
   'brand-3': {
     label: 'Brand 3',
-    fontFamily: { candidates: ['font/family/opensans', 'font/family/open-sans'], unit: null },
-    radius: { candidates: ['border-radius/999', 'borderradius/999'], unit: 'px' },
-    paddingInline: { candidates: ['spacing/16'], unit: 'px' },
-    paddingBlock: { candidates: ['spacing/4'], unit: 'px' }
+    fontFamily: createBrandFoundationBinding('brand-3.fontFamily', 'brand-3', 'font-family', ['font/family/opensans', 'font/family/open-sans']),
+    controlRadius: createBrandFoundationBinding('brand-3.controlRadius', 'brand-3', 'control/radius', ['border-radius/999', 'borderradius/999'], 'px'),
+    controlPaddingInline: createBrandFoundationBinding('brand-3.controlPaddingInline', 'brand-3', 'control/padding-inline', ['spacing/16'], 'px'),
+    controlPaddingBlock: createBrandFoundationBinding('brand-3.controlPaddingBlock', 'brand-3', 'control/padding-block', ['spacing/4'], 'px')
   }
 };
 
-const BUTTON_BINDINGS = {
-  'brand-1': {
-    default: {
-      background: ['component/button/brand-1/background/default', 'background/brand1/primary'],
-      foreground: ['component/button/brand-1/foreground/default', 'text/brand1/inverse']
-    },
-    hover: {
-      background: ['component/button/brand-1/background/hover', 'background/brand1/secondary'],
-      foreground: ['component/button/brand-1/foreground/hover', 'text/brand1/inverse']
-    },
-    active: {
-      background: ['component/button/brand-1/background/active', 'background/brand1/tertiary'],
-      foreground: ['component/button/brand-1/foreground/active', 'text/brand1/primary']
-    },
-    disabled: {
-      background: ['component/button/brand-1/background/disabled', 'background/neutral/disabled'],
-      foreground: ['component/button/brand-1/foreground/disabled', 'text/neutral/disabled']
-    }
-  },
-  'brand-2': {
-    default: {
-      background: ['component/button/brand-2/background/default', 'background/brand2/primary'],
-      foreground: ['component/button/brand-2/foreground/default', 'semantic/text/primary', 'text/neutral/primary']
-    },
-    hover: {
-      background: ['component/button/brand-2/background/hover', 'background/brand2/secondary'],
-      foreground: ['component/button/brand-2/foreground/hover', 'semantic/text/primary', 'text/neutral/primary']
-    },
-    active: {
-      background: ['component/button/brand-2/background/active', 'background/brand2/tertiary'],
-      foreground: ['component/button/brand-2/foreground/active', 'text/neutral/tertiary', 'semantic/text/secondary']
-    },
-    disabled: {
-      background: ['component/button/brand-2/background/disabled', 'background/neutral/disabled'],
-      foreground: ['component/button/brand-2/foreground/disabled', 'semantic/text/muted', 'text/neutral/disabled']
-    }
-  },
-  'brand-3': {
-    default: {
-      background: ['component/button/brand-3/background/default', 'background/brand3/primary'],
-      foreground: ['component/button/brand-3/foreground/default', 'text/neutral/tertiary', 'semantic/text/secondary']
-    },
-    hover: {
-      background: ['component/button/brand-3/background/hover', 'background/brand3/secondary'],
-      foreground: ['component/button/brand-3/foreground/hover', 'text/neutral/tertiary', 'semantic/text/secondary']
-    },
-    active: {
-      background: ['component/button/brand-3/background/active', 'background/brand3/tertiary'],
-      foreground: ['component/button/brand-3/foreground/active', 'text/neutral/tertiary', 'semantic/text/secondary']
-    },
-    disabled: {
-      background: ['component/button/brand-3/background/disabled', 'background/neutral/disabled'],
-      foreground: ['component/button/brand-3/foreground/disabled', 'semantic/text/muted', 'text/neutral/disabled']
-    }
-  }
+const BUTTON_STATE_ORDER = ['default', 'hover', 'active', 'disabled'];
+const BUTTON_FACETS = {
+  background: 'background',
+  foreground: 'foreground'
 };
-
 const BRAND_STYLE_THEMES = ['light', 'dark'];
 
 export function buildTokensFromVariablePayload(variablePayload, options = {}) {
@@ -113,77 +67,92 @@ export function buildTokensFromVariablePayload(variablePayload, options = {}) {
 
   const palettes = extractPaletteTokens(registry);
   if (Object.keys(palettes).length === 0) {
-    warnings.push('No palette variables matched the expected palette naming patterns.')
+    warnings.push('No palette variables matched the expected palette naming patterns.');
   }
 
-  const themes = Object.fromEntries(
-    Object.entries(THEME_BINDINGS).map(([themeName, themeBindings]) => [
-      themeName,
-      Object.fromEntries(
-        Object.entries(themeBindings).map(([tokenName, candidates]) => [
-          tokenName,
-          resolveBinding(registry, {
-            candidates,
-            modeName: themeName,
-            tokenName: `${themeName}.${tokenName}`
-          })
-        ])
-      )
-    ])
-  );
+  const themeBindings = {};
+  const themes = {};
 
-  const brands = Object.fromEntries(
-    Object.entries(BRAND_BINDINGS).map(([brandName, brandBindings]) => [
-      brandName,
-      {
-        label: brandBindings.label,
-        fontFamily: resolveBinding(registry, {
-          ...brandBindings.fontFamily,
-          tokenName: `${brandName}.fontFamily`
-        }),
-        radius: resolveBinding(registry, {
-          ...brandBindings.radius,
-          tokenName: `${brandName}.radius`
-        }),
-        paddingInline: resolveBinding(registry, {
-          ...brandBindings.paddingInline,
-          tokenName: `${brandName}.paddingInline`
-        }),
-        paddingBlock: resolveBinding(registry, {
-          ...brandBindings.paddingBlock,
-          tokenName: `${brandName}.paddingBlock`
-        })
+  for (const [themeName, tokenBindings] of Object.entries(THEME_TOKEN_BINDINGS)) {
+    themeBindings[themeName] = {};
+    themes[themeName] = {};
+
+    for (const [tokenName, bindingDefinition] of Object.entries(tokenBindings)) {
+      const resolution = resolveBinding(registry, {
+        ...bindingDefinition,
+        modeName: themeName
+      });
+
+      themeBindings[themeName][tokenName] = serializeBinding(resolution);
+      themes[themeName][tokenName] = resolution.value;
+    }
+  }
+
+  const brandBindings = {};
+  const brands = {};
+
+  for (const [brandName, brandDefinition] of Object.entries(BRAND_FOUNDATION_BINDINGS)) {
+    brandBindings[brandName] = {};
+    brands[brandName] = {
+      label: brandDefinition.label,
+      fontFamily: '',
+      control: {
+        radius: '',
+        paddingInline: '',
+        paddingBlock: ''
       }
-    ])
-  );
+    };
 
-  const button = Object.fromEntries(
-    Object.entries(BUTTON_BINDINGS).map(([brandName, stateBindings]) => [
-      brandName,
-      Object.fromEntries(
-        BRAND_STYLE_THEMES.map((themeName) => [
-          themeName,
-          Object.fromEntries(
-            Object.entries(stateBindings).map(([stateName, styleBindings]) => [
+    const fontFamilyResolution = resolveBinding(registry, brandDefinition.fontFamily);
+    brandBindings[brandName].fontFamily = serializeBinding(fontFamilyResolution);
+    brands[brandName].fontFamily = fontFamilyResolution.value;
+
+    const controlRadiusResolution = resolveBinding(registry, brandDefinition.controlRadius);
+    brandBindings[brandName].controlRadius = serializeBinding(controlRadiusResolution);
+    brands[brandName].control.radius = controlRadiusResolution.value;
+
+    const controlPaddingInlineResolution = resolveBinding(registry, brandDefinition.controlPaddingInline);
+    brandBindings[brandName].controlPaddingInline = serializeBinding(controlPaddingInlineResolution);
+    brands[brandName].control.paddingInline = controlPaddingInlineResolution.value;
+
+    const controlPaddingBlockResolution = resolveBinding(registry, brandDefinition.controlPaddingBlock);
+    brandBindings[brandName].controlPaddingBlock = serializeBinding(controlPaddingBlockResolution);
+    brands[brandName].control.paddingBlock = controlPaddingBlockResolution.value;
+  }
+
+  const buttonBindings = {};
+  const button = {};
+
+  for (const brandName of Object.keys(BRAND_FOUNDATION_BINDINGS)) {
+    buttonBindings[brandName] = {};
+    button[brandName] = {};
+
+    for (const themeName of BRAND_STYLE_THEMES) {
+      buttonBindings[brandName][themeName] = {};
+      button[brandName][themeName] = {};
+
+      for (const stateName of BUTTON_STATE_ORDER) {
+        buttonBindings[brandName][themeName][stateName] = {};
+        button[brandName][themeName][stateName] = {};
+
+        for (const [facetName, facetPath] of Object.entries(BUTTON_FACETS)) {
+          const resolution = resolveBinding(
+            registry,
+            createButtonStateBinding({
+              brandName,
+              themeName,
               stateName,
-              {
-                background: resolveBinding(registry, {
-                  candidates: styleBindings.background,
-                  modeName: themeName,
-                  tokenName: `${brandName}.${themeName}.button.${stateName}.background`
-                }),
-                foreground: resolveBinding(registry, {
-                  candidates: styleBindings.foreground,
-                  modeName: themeName,
-                  tokenName: `${brandName}.${themeName}.button.${stateName}.foreground`
-                })
-              }
-            ])
-          )
-        ])
-      )
-    ])
-  );
+              facetPath,
+              tokenName: `${brandName}.${themeName}.button.${stateName}.${facetName}`
+            })
+          );
+
+          buttonBindings[brandName][themeName][stateName][facetName] = serializeBinding(resolution);
+          button[brandName][themeName][stateName][facetName] = resolution.value;
+        }
+      }
+    }
+  }
 
   return {
     meta: {
@@ -195,9 +164,17 @@ export function buildTokensFromVariablePayload(variablePayload, options = {}) {
       },
       notes: [
         'Generated from the Figma Variables API.',
-        'The sync resolves named token bindings and fails fast when required tokens are missing.'
+        'The sync resolves semantic-first token bindings and only falls back to legacy aliases when required.',
+        'Bindings include source diagnostics so design and frontend teams can review which Figma variables powered the generated contract.'
       ],
-      warnings
+      warnings,
+      bindings: {
+        themes: themeBindings,
+        brands: brandBindings,
+        components: {
+          button: buttonBindings
+        }
+      }
     },
     palettes,
     themes,
@@ -230,20 +207,42 @@ export function buildContractCss(tokens) {
   return `/*
   Stable public token contract.
 
-  Components may consume these variables, but should not redefine brand or theme values.
-  Official brand packs and consumer-owned override packs sit on top of this contract.
+  This is the CSS custom property API that every component in the design system reads from.
+  It is the single coupling point between the design layer and the component layer.
+
+  ## Architectural intent
+
+  - Semantic tokens drive the generated theme layer.
+  - Brand foundations drive shared control-level dimensions and typography.
+  - Component tokens remain explicit so each primitive can evolve without leaking internal DOM details.
+
+  ## How the token cascade works
+
+  1. This file (contract.css) defines every --ff-* variable with safe fallback values.
+  2. Official brand packs override semantic and control variables through [data-brand][data-theme].
+  3. Component structural CSS reads only this stable contract via var(--ff-*).
+
+  Generated from the Figma Variables API. Do not hand-edit.
 */
 :root {
   --ff-font-family-brand: ${defaultBrand?.fontFamily ?? 'inherit'};
-  --ff-button-radius: ${defaultBrand?.radius ?? '0px'};
-  --ff-button-padding-inline: ${defaultBrand?.paddingInline ?? '0.875rem'};
-  --ff-button-padding-block: ${defaultBrand?.paddingBlock ?? '0.5rem'};
+
+  --ff-control-radius: ${defaultBrand?.control?.radius ?? '0px'};
+  --ff-control-padding-inline: ${defaultBrand?.control?.paddingInline ?? '0.875rem'};
+  --ff-control-padding-block: ${defaultBrand?.control?.paddingBlock ?? '0.5rem'};
+
+  --ff-button-radius: var(--ff-control-radius);
+  --ff-button-padding-inline: var(--ff-control-padding-inline);
+  --ff-button-padding-block: var(--ff-control-padding-block);
+
   --ff-color-canvas: ${defaultTheme?.canvas ?? '#ffffff'};
   --ff-color-surface: ${defaultTheme?.surface ?? '#ffffff'};
   --ff-color-text-primary: ${defaultTheme?.textPrimary ?? '#111111'};
   --ff-color-text-secondary: ${defaultTheme?.textSecondary ?? '#5f5f5f'};
   --ff-color-text-muted: ${defaultTheme?.textMuted ?? '#8b8b8b'};
   --ff-color-border-subtle: ${defaultTheme?.borderSubtle ?? '#d8d8d8'};
+  --ff-color-focus-ring: color-mix(in srgb, var(--ff-color-text-primary) 28%, transparent);
+
   --ff-button-bg-default: ${defaultButton.default?.background ?? 'transparent'};
   --ff-button-fg-default: ${defaultButton.default?.foreground ?? 'currentColor'};
   --ff-button-bg-hover: ${defaultButton.hover?.background ?? 'transparent'};
@@ -271,9 +270,9 @@ export function buildFigmaPresetCss(tokens) {
       ([brandName, config]) => `
 [data-brand="${brandName}"] {
   --ff-font-family-brand: ${config.fontFamily};
-  --ff-button-radius: ${config.radius};
-  --ff-button-padding-inline: ${config.paddingInline};
-  --ff-button-padding-block: ${config.paddingBlock};
+  --ff-control-radius: ${config.control.radius};
+  --ff-control-padding-inline: ${config.control.paddingInline};
+  --ff-control-padding-block: ${config.control.paddingBlock};
 }`.trim()
     )
     .join('\n\n');
@@ -372,9 +371,9 @@ export function buildOfficialBrandStyles(tokens) {
 
 [data-brand='${brandName}'] {
   --ff-font-family-brand: ${brandConfig.fontFamily};
-  --ff-button-radius: ${brandConfig.radius};
-  --ff-button-padding-inline: ${brandConfig.paddingInline};
-  --ff-button-padding-block: ${brandConfig.paddingBlock};
+  --ff-control-radius: ${brandConfig.control.radius};
+  --ff-control-padding-inline: ${brandConfig.control.paddingInline};
+  --ff-control-padding-block: ${brandConfig.control.paddingBlock};
 }
 
 [data-brand='${brandName}'][data-theme='${themeName}'] {
@@ -486,23 +485,35 @@ function extractPaletteTokens(registry) {
 }
 
 function resolveBinding(registry, binding) {
-  const { candidates, modeName, unit, tokenName } = binding;
-  const normalizedCandidates = candidates.map((candidate) => normalizeTokenPath(candidate));
+  const normalizedCandidates = binding.candidates.map((candidate) => normalizeTokenPath(candidate));
 
-  for (const candidateName of normalizedCandidates) {
+  for (let index = 0; index < normalizedCandidates.length; index += 1) {
+    const candidateName = normalizedCandidates[index];
     const matchingVariables = registry.variablesByNormalizedName.get(candidateName) ?? [];
     if (matchingVariables.length === 0) {
       continue;
     }
 
-    const value = resolveVariableValue(registry, matchingVariables[0], { modeName, unit });
+    const matchedVariable = matchingVariables[0];
+    const value = resolveVariableValue(registry, matchedVariable, {
+      modeName: binding.modeName,
+      unit: binding.unit
+    });
+
     if (value !== undefined) {
-      return value;
+      return {
+        tokenName: binding.tokenName,
+        value,
+        matchedCandidate: binding.candidates[index],
+        variableName: matchedVariable.name,
+        variableNormalizedName: matchedVariable.normalizedName,
+        modeName: binding.modeName ?? 'default'
+      };
     }
   }
 
   throw new Error(
-    `Missing required Figma variable binding for "${tokenName}". Checked: ${candidates.join(', ')}.`
+    `Missing required Figma variable binding for "${binding.tokenName}". Checked: ${binding.candidates.join(', ')}.`
   );
 }
 
@@ -635,6 +646,132 @@ function sortPaletteGroups(palettes) {
         )
       ])
   );
+}
+
+function createThemeBinding(tokenName, semanticPath, legacyCandidates = []) {
+  return {
+    tokenName,
+    candidates: uniqueCandidates([
+      `semantic/${semanticPath}`,
+      `theme/${tokenName.split('.')[0]}/${semanticPath}`,
+      ...legacyCandidates
+    ])
+  };
+}
+
+function createBrandFoundationBinding(tokenName, brandName, semanticPath, legacyCandidates = [], unit = null) {
+  return {
+    tokenName,
+    unit,
+    candidates: uniqueCandidates([
+      ...brandScopedCandidates(brandName, semanticPath, [
+        'semantic/brand',
+        'brand',
+        'foundation/brand'
+      ]),
+      ...legacyCandidates
+    ])
+  };
+}
+
+function createButtonStateBinding({ brandName, themeName, stateName, facetPath, tokenName }) {
+  return {
+    tokenName,
+    candidates: uniqueCandidates([
+      ...brandScopedCandidates(brandName, `button/${facetPath}/${stateName}`, [
+        'component',
+        'semantic/component'
+      ]),
+      ...brandScopedCandidates(brandName, `component/button/${facetPath}/${stateName}`, ['semantic']),
+      ...legacyButtonCandidates(brandName, stateName, facetPath),
+      ...themeAwareButtonCandidates(themeName, stateName, facetPath),
+      `component/button/${facetPath}/${stateName}`,
+      `semantic/component/button/${facetPath}/${stateName}`
+    ])
+  };
+}
+
+function brandScopedCandidates(brandName, leafPath, roots) {
+  const aliases = BRAND_ALIASES[brandName] ?? [brandName];
+  const pathSegments = leafPath.split('/').filter(Boolean);
+
+  return roots.flatMap((root) =>
+    aliases.flatMap((brandAlias) => [
+      [root, brandAlias, ...pathSegments].join('/'),
+      [root, ...pathSegments, brandAlias].join('/')
+    ])
+  );
+}
+
+function themeAwareButtonCandidates(themeName, stateName, facetPath) {
+  return [
+    `semantic/button/${themeName}/${facetPath}/${stateName}`,
+    `component/button/${themeName}/${facetPath}/${stateName}`
+  ];
+}
+
+function legacyButtonCandidates(brandName, stateName, facetPath) {
+  const legacyBrandName = brandName.replace('-', '');
+
+  if (facetPath === 'background') {
+    const legacyStateMap = {
+      default: 'primary',
+      hover: 'secondary',
+      active: 'tertiary',
+      disabled: 'neutral/disabled'
+    };
+
+    const mappedValue = legacyStateMap[stateName];
+    if (mappedValue === 'neutral/disabled') {
+      return ['background/neutral/disabled'];
+    }
+
+    return [`background/${legacyBrandName}/${mappedValue}`];
+  }
+
+  const legacyForegroundMap = {
+    'brand-1': {
+      default: ['text/brand1/inverse'],
+      hover: ['text/brand1/inverse'],
+      active: ['text/brand1/primary'],
+      disabled: ['text/neutral/disabled']
+    },
+    'brand-2': {
+      default: ['semantic/text/primary', 'text/neutral/primary'],
+      hover: ['semantic/text/primary', 'text/neutral/primary'],
+      active: ['text/neutral/tertiary', 'semantic/text/secondary'],
+      disabled: ['semantic/text/muted', 'text/neutral/disabled']
+    },
+    'brand-3': {
+      default: ['text/neutral/tertiary', 'semantic/text/secondary'],
+      hover: ['text/neutral/tertiary', 'semantic/text/secondary'],
+      active: ['text/neutral/tertiary', 'semantic/text/secondary'],
+      disabled: ['semantic/text/muted', 'text/neutral/disabled']
+    }
+  };
+
+  return legacyForegroundMap[brandName]?.[stateName] ?? ['semantic/text/primary'];
+}
+
+function uniqueCandidates(candidates) {
+  return Array.from(
+    new Set(
+      candidates
+        .flat()
+        .filter(Boolean)
+        .map((candidate) => normalizeTokenPath(candidate))
+    )
+  );
+}
+
+function serializeBinding(resolution) {
+  return {
+    candidate: resolution.matchedCandidate,
+    variable: resolution.variableName,
+    normalizedVariable: resolution.variableNormalizedName,
+    mode: resolution.modeName,
+    value: resolution.value
+  };
 }
 
 function asRecord(value) {

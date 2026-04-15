@@ -10,9 +10,16 @@ This repository publishes two npm packages:
 ## What lives here
 
 - the Figma Variables sync entry point
-- the variable-first token binding logic
+- the semantic-first token binding logic with legacy aliases for compatibility
 - the generated token contract files
 - the official brand CSS packs
+
+## Architectural intent
+
+- Semantic tokens are the primary source for runtime colors and surfaces.
+- Shared control tokens define reusable dimensions such as radius and padding.
+- Component aliases such as `--ff-button-*` sit on top of the control layer so future primitives can share foundations without hard-coding button assumptions into the runtime.
+- The generated `tokens.json` includes binding diagnostics so design and frontend teams can see which Figma variables resolved each contract token.
 
 ## Release order
 
