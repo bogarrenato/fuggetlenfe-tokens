@@ -9,7 +9,8 @@ This repository publishes two npm packages:
 
 ## What lives here
 
-- the Figma Variables sync entry point
+- the Figma Source Manifest (`src/figma-source-manifest.json`) — the authoritative map from Figma identifiers to shipped primitives, tokens, and wrapper exports
+- the pluggable Figma sync sources under `src/sources/` (`variables-api.mjs` for live sync, `snapshot.mjs` for offline / non-Enterprise fallback)
 - the semantic-first token binding logic with legacy aliases for compatibility
 - the generated token contract files
 - the official brand CSS packs
@@ -39,9 +40,25 @@ share token sources through a local workspace link in production.
 ```bash
 npm install
 npm test
-FIGMA_TOKEN=your_token npm run figma:sync
+FIGMA_TOKEN=your_token npm run figma:sync         # live sync (requires file_variables:read)
+FIGMA_SOURCE=snapshot npm run figma:sync          # offline sync from tokens/figma-snapshot.json
 npm run pack:check
 ```
+
+### Sync sources
+
+The sync selects a source via `FIGMA_SOURCE` (default `variables-api`):
+
+| Source | Network | Scope required | When to use |
+|---|---|---|---|
+| `variables-api` | yes | `file_variables:read` (Enterprise) | Normal path for operators with Enterprise access; also refreshes `tokens/figma-snapshot.json` automatically |
+| `snapshot` | no | none | CI builds, release pipelines on non-Enterprise plans, reproducible rebuilds from the committed snapshot |
+
+The first successful `variables-api` run bootstraps `tokens/figma-snapshot.json`. Every subsequent CI build can then use `FIGMA_SOURCE=snapshot` without any Figma credentials.
+
+### Source manifest
+
+`src/figma-source-manifest.json` is the single authoritative mapping between the Figma file and the platform. It records the file identity, the roles of each Figma page, the brand and theme identifiers, and one entry per primitive with its Figma component set IDs, variant IDs, Stencil tag name, wrapper exports, and token lists. Governance rules are documented in the PoC monorepo under `docs/governance.md`.
 
 ## npm publishing
 

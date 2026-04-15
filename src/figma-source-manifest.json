@@ -1,0 +1,196 @@
+{
+  "$schema": "./figma-source-manifest.schema.json",
+  "version": 1,
+  "figma": {
+    "fileKey": "scEvsCrwxBBllYGMaz4vKH",
+    "fileName": "Design System",
+    "fileVersion": "2342633476838310863",
+    "capturedAt": "2026-04-15T17:11:04Z",
+    "capturedNodes": ["9:228"],
+    "url": "https://www.figma.com/design/scEvsCrwxBBllYGMaz4vKH/Design-System"
+  },
+  "pages": {
+    "brand": {
+      "id": "0:1",
+      "name": "Brand",
+      "role": "design-reference",
+      "description": "Palette swatches, color scales, and Colour Usage guidelines. Not a source of shipped primitives."
+    },
+    "components": {
+      "id": "9:228",
+      "name": "Components",
+      "role": "primitive-source",
+      "description": "Canonical source of every shipped and roadmap primitive."
+    },
+    "pages": {
+      "id": "77:419",
+      "name": "Pages",
+      "role": "application-example",
+      "description": "Login page layouts per brand x theme. Application-level examples, not platform primitives."
+    }
+  },
+  "brands": [
+    { "id": "brand-1", "aliases": ["brand1"], "status": "official" },
+    { "id": "brand-2", "aliases": ["brand2"], "status": "official" },
+    { "id": "brand-3", "aliases": ["brand3"], "status": "official" }
+  ],
+  "themes": [
+    { "id": "light", "aliases": ["default", "base", "day"] },
+    { "id": "dark", "aliases": ["night"] }
+  ],
+  "primitives": {
+    "Button": {
+      "figma": {
+        "publicComponentSetId": "113:161",
+        "internalComponentSetId": "15:190",
+        "variantProperty": "State",
+        "states": ["Default", "Hover", "Active", "Disabled"],
+        "variantIds": {
+          "Default": "113:160",
+          "Hover": "113:162",
+          "Active": "113:165",
+          "Disabled": "113:168"
+        }
+      },
+      "stencil": {
+        "tagName": "ff-button",
+        "sourceDir": "packages/components/src/components/ff-button",
+        "wrapperExports": {
+          "react": "FfButton",
+          "angular": "FfButton"
+        }
+      },
+      "tokens": {
+        "control": ["--ff-button-radius", "--ff-button-padding-inline", "--ff-button-padding-block"],
+        "perState": {
+          "Default": ["--ff-button-bg-default", "--ff-button-fg-default"],
+          "Hover": ["--ff-button-bg-hover", "--ff-button-fg-hover"],
+          "Active": ["--ff-button-bg-active", "--ff-button-fg-active"],
+          "Disabled": ["--ff-button-bg-disabled", "--ff-button-fg-disabled"]
+        }
+      },
+      "status": "stable",
+      "shipping": ["core", "react-wrapper", "angular-wrapper"]
+    },
+    "Input": {
+      "figma": {
+        "publicComponentSetId": "114:402",
+        "internalComponentSetId": "51:229",
+        "variantProperty": "State",
+        "states": ["Default", "Hover", "Active", "Filled", "Disabled"],
+        "variantIds": {
+          "Default": "114:401",
+          "Hover": "114:403",
+          "Active": "114:406",
+          "Filled": "114:409",
+          "Disabled": "114:412"
+        },
+        "instanceProperties": {
+          "Show text": { "type": "BOOLEAN", "default": true },
+          "Text": { "type": "TEXT", "default": "Lorem ipsum" }
+        }
+      },
+      "stencil": {
+        "tagName": "ff-input",
+        "sourceDir": null,
+        "wrapperExports": { "react": null, "angular": null }
+      },
+      "tokens": {
+        "control": ["--ff-input-radius", "--ff-input-padding-inline", "--ff-input-padding-block"],
+        "perState": {
+          "Default": ["--ff-input-bg-default", "--ff-input-fg-default", "--ff-input-border-default", "--ff-input-placeholder-default"],
+          "Hover": ["--ff-input-bg-hover", "--ff-input-fg-hover", "--ff-input-border-hover"],
+          "Active": ["--ff-input-bg-active", "--ff-input-fg-active", "--ff-input-border-active"],
+          "Filled": ["--ff-input-bg-filled", "--ff-input-fg-filled", "--ff-input-border-filled"],
+          "Disabled": ["--ff-input-bg-disabled", "--ff-input-fg-disabled", "--ff-input-border-disabled"]
+        }
+      },
+      "status": "roadmap",
+      "shipping": [],
+      "openDesignDecisions": [
+        "Is the 'Filled' state a distinct visual or a CSS-driven :not(:placeholder-shown) derivation? Currently modelled as a distinct token set.",
+        "Should ff-input expose :part(input) and :part(label) or only :part(input)? FormInput composite implies label is a separate DOM layer owned by the consumer."
+      ]
+    }
+  },
+  "composites": {
+    "FormInput": {
+      "figma": {
+        "componentId": "114:441",
+        "composesOf": ["Input"],
+        "structure": "[TEXT 'Felirat'] + [INSTANCE Input]"
+      },
+      "platform": {
+        "status": "docs-only",
+        "stencilComponent": null,
+        "docsPattern": "docs/patterns/form-field.md",
+        "rationale": "Trivially composable in two lines of consumer code (label wrapping ff-input). Keeping primitives atomic; composites live in docs, not npm."
+      }
+    }
+  },
+  "showcaseFrames": {
+    "Button": {
+      "Light": {
+        "id": "114:292",
+        "size": "400x776",
+        "subFrames": {
+          "Light, Brand1": { "brand": "brand-1", "theme": "light" },
+          "Light, Brand2": { "brand": "brand-2", "theme": "light" },
+          "Light, Brand3": { "brand": "brand-3", "theme": "light" }
+        }
+      },
+      "Dark": {
+        "id": "114:293",
+        "size": "400x776",
+        "subFrames": {
+          "Dark, Brand1": { "brand": "brand-1", "theme": "dark" },
+          "Dark, Brand2": { "brand": "brand-2", "theme": "dark" },
+          "Dark, Brand3": { "brand": "brand-3", "theme": "dark" }
+        }
+      }
+    },
+    "Input": {
+      "Light": {
+        "id": "114:318",
+        "size": "400x1575",
+        "subFrames": {
+          "Light, Brand1": { "brand": "brand-1", "theme": "light" },
+          "Light, Brand2": { "brand": "brand-2", "theme": "light" },
+          "Light, Brand3": { "brand": "brand-3", "theme": "light" }
+        }
+      },
+      "Dark": {
+        "id": "114:334",
+        "size": "400x1575",
+        "subFrames": {
+          "Dark, Brand1": { "brand": "brand-1", "theme": "dark" },
+          "Dark, Brand2": { "brand": "brand-2", "theme": "dark" },
+          "Dark, Brand3": { "brand": "brand-3", "theme": "dark" }
+        }
+      }
+    }
+  },
+  "applicationExamples": {
+    "Login": {
+      "subCanvasId": "77:420",
+      "layouts": {
+        "brand-1-light": "77:422",
+        "brand-1-dark": "77:561",
+        "brand-2-light": "77:459",
+        "brand-2-dark": "77:597",
+        "brand-3-light": "77:510",
+        "brand-3-dark": "77:579"
+      },
+      "role": "reference-only",
+      "note": "Not shipped as primitives. Candidates for a future fuggetlenfe-starter-templates repository."
+    }
+  },
+  "nonShippedInventory": {
+    "description": "Items inventoried by historical refactors that are NOT in the current Figma source. Kept here as an audit trail; not eligible for platform inclusion until Figma source exists.",
+    "items": [
+      { "name": "Dropdown", "previousTagName": "ff-dropdown", "removedAt": "2026-04", "reason": "no Figma source" },
+      { "name": "Modal", "previousTagName": "ff-modal", "removedAt": "2026-04", "reason": "no Figma source" },
+      { "name": "DataTable", "previousTagName": "ff-data-table", "removedAt": "2026-04", "reason": "no Figma source" }
+    ]
+  }
+}
