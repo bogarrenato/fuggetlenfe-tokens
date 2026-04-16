@@ -61,7 +61,7 @@
         }
       },
       "tokens": {
-        "control": ["--ff-button-radius", "--ff-button-padding-inline", "--ff-button-padding-block"],
+        "control": ["--ff-button-radius", "--ff-button-padding-inline", "--ff-button-padding-block", "--ff-button-gap"],
         "perState": {
           "Default": ["--ff-button-bg-default", "--ff-button-fg-default"],
           "Hover": ["--ff-button-bg-hover", "--ff-button-fg-hover"],

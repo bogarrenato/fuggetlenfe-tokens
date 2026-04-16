@@ -28,6 +28,7 @@
   --ff-button-radius: var(--ff-control-radius);
   --ff-button-padding-inline: var(--ff-control-padding-inline);
   --ff-button-padding-block: var(--ff-control-padding-block);
+  --ff-button-gap: 0.5em;
 
   --ff-color-canvas: #FAFAFA;
   --ff-color-surface: #FAFAFA;
